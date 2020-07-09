@@ -1,0 +1,44 @@
+<div class="container detailArticle">
+  <div class="row">
+    <div class="col-md-12">
+      <h1 class="mt-4">{{ currentArticle.title }}</h1>
+      <p class="author">
+        by<i> {{ currentArticle.user }}</i>
+      </p>
+      <hr />
+      <p>{{ currentArticle.content }}</p>
+    </div>
+  </div>
+</div>
+
+<div class="detailComment mt-3 mb-3">
+  {{ currentArticle.comments.length }} comments
+
+  <div class="form-group mt-2" *ngIf="currentArticle.comments.length">
+    <h6>Comments</h6>
+    <ul class="list-group">
+      <li *ngFor="let item of currentArticle.comments" class="list-group-item">
+        {{ item.content }}
+      </li>
+    </ul>
+  </div>
+</div>
+
+<div class="card my-4 commentForm">
+  <h5 class="card-header">Leave a Comment:</h5>
+  <div class="card-body">
+    <form>
+      <div class="form-group">
+        <textarea
+          class="form-control"
+          rows="10"
+          [(ngModel)]="commentContent"
+          name="commentContent"
+        ></textarea>
+      </div>
+      <button type="submit" class="btn btn-primary" (click)="postComment()">
+        Submit
+      </button>
+    </form>
+  </div>
+</div>

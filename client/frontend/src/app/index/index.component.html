@@ -1,0 +1,31 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="mb-3 block">
+        <h1 class="my-4 d-inline">Recent Articles</h1>
+        <span
+          class="d-inline"
+          style="float: right;"
+          *ngIf="userService.isLoggedIn"
+        >
+          <button class="btn btn-success" routerLink="/createArticle">
+            Add New
+          </button>
+        </span>
+      </div>
+      <!--noi dung-->
+      <div class="card mb-4" *ngFor="let item of articles">
+        <div class="card-body">
+          <h2 class="card-title">{{ item.title }}</h2>
+          <p class="card-text">{{ item.content | truncate }}</p>
+          <p class="card-text">{{ item.comments.length }} comments</p>
+          <a [routerLink]="['/detailArticle', item._id]" class="btn btn-primary"
+            >Read More &rarr;</a
+          >
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
